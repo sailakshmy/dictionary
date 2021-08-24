@@ -13,10 +13,13 @@ const Header = ({language, setLanguage, word, setWord}) => {
       type: 'dark',
     },
   });
-  // console.log("language", language);
+  const handleChangeLanguage=(e)=>{
+    setLanguage(e.target.value);
+    setWord('');
+  }
   return (
     <div className='header'>
-      <span className='title'>Word-Search</span>
+      <span className='title'>{word?word:'Word-Search'}</span>
       <div className="inputs">
         <ThemeProvider theme={darkTheme}>
           <TextField 
@@ -26,10 +29,10 @@ const Header = ({language, setLanguage, word, setWord}) => {
           value={word}
           onChange={(e)=>setWord(e.target.value)} />
           <TextField
-          id="outlined-select-language"
+         className='language'
           select
           value={language}
-          onChange={(e)=>setLanguage(e.target.value)}
+          onChange={handleChangeLanguage}
           label='Language'
           variant="outlined"
         >

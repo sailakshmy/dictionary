@@ -1,0 +1,25 @@
+.meanings{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    scrollbar-width: thin;
+    max-height: 55vh;
+    border: 5px solid rgb(105, 105, 105);
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.noWord{
+    font-size: 3vw;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@media (max-width: 900px) {
+    .meanings{
+        max-height: 60vh;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}
