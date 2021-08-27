@@ -1,16 +1,18 @@
 import React from 'react';
 import './Definitions.css';
 
-const Definitions = ({word, definitions, language}) => {
+const Definitions = ({word, definitions, language, theme}) => {
   return (
     <div className='meanings'>
-        {console.log(definitions)}
         {word && language==='en' && definitions[0] && definitions[0].phonetics[0] && (
             <audio 
-            style={{backgroundColor:'#fff', borderRadius: 10}} 
-            src={definitions[0].phonetics[0].audio}
-            controls 
-            type="audio/mp3">
+              style={{
+                  backgroundColor:theme?'#000':'#fff', 
+                  borderRadius: 10
+                }} 
+              src={definitions[0].phonetics[0].audio}
+              controls 
+              type="audio/mp3">
                 Sorry. Your browser does not support audio.
             </audio>
         )}
@@ -19,9 +21,16 @@ const Definitions = ({word, definitions, language}) => {
     : definitions.map(definition=>(
         definition.meanings.map(meaning=>(
             meaning.definitions.map(def=>(
-                <div className="singleDefinition" style={{backgroundColor:'white', color:'black'}}>
+                <div className="singleDefinition" 
+                    style={{
+                        backgroundColor:theme?'#3b5360':'white', 
+                        color:theme?'white':'black',
+                    }}>
                     <b>{def.definition}</b>
-                    <hr style={{backgroundColor:'black', width:'100%'}}/>
+                    <hr style={{
+                        backgroundColor:theme?'white':'black',
+                        width:'100%'
+                    }}/>
                     <br/>
                     {def.example && <span>
                         <b><u>Example:</u> {def.example}</b>
